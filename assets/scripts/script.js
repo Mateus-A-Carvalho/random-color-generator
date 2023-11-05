@@ -1,13 +1,11 @@
 const colorContainers = document.querySelectorAll(".color-container");
 
-function getNameColors() {
-  let R = Math.floor(Math.random() * 255);
-  let G = Math.floor(Math.random() * 255);
-  let B = Math.floor(Math.random() * 255);
+const HEXColor = () => {
+  const HEXColor = (Math.random() * 0xfffff * 100000).toString(16);
+  return `#${HEXColor}`.slice(0, 7);
+} 
 
-  return `The color is RGB(${R}, ${G}, ${B})`;
-}
-
-// Note: The function that get a random color in RGB was done but we need to do this in HEX;
-
-console.log(getNameColors());
+colorContainers.forEach((container) => {
+  container.innerHTML = HEXColor();
+  container.style.backgroundColor = HEXColor();
+});
